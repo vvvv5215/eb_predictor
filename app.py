@@ -18,7 +18,7 @@ month = st.number_input("Month (1-12)", min_value=1, value=1,max_value=12, step=
 city = st.selectbox("City", encoders['City'].classes_)
 company = st.selectbox("Company", encoders['Company'].classes_)
 monthly_hours = st.number_input("Monthly Usage Hours", min_value=0, value=100, step=1)
-tariff_rate = st.number_input("Tariff Rate", min_value=0, value=8, step=1)
+tariff_rate = st.number_input("Tariff Rate", min_value=0.0, value=8.0)
 
 if st.button("Predict"):
     user_data = pd.DataFrame({
