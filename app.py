@@ -7,8 +7,6 @@ import urllib.request
 
 MODEL_URL = "https://drive.google.com/uc?export=download&id=1fKI3pX3xoS73AfiFv05nSBeKxeqkAMy_"
 MODEL_PATH = "data/rf_model.joblib"
-
-# Encoder file (replace FILE_ID with your actual encoder file id)
 ENCODER_URL = "https://drive.google.com/uc?export=download&id=1eWrsWE7rRbF34U5POvoREBLG7QDWWwZb"
 ENCODER_PATH = "data/encoders.joblib"
 
