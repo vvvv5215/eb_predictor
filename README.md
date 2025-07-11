@@ -7,6 +7,9 @@ Working Pic:
 
 Hosted link is available! But note that the model would have been compressed so it's a little worse. It is recommended to clone the project and run for more accurate results!
 ( I made a different repo with the same code but compressed model to host this )
+
+
+
 https://vvvv5215-predict-eb-mini-app-xf5p72.streamlit.app/
 
 
