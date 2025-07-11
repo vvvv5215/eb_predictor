@@ -1,10 +1,28 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
+import urllib.request
 
 
-model = joblib.load('data/rf_model.joblib')
-encoders = joblib.load('data/encoders.joblib')
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1fKI3pX3xoS73AfiFv05nSBeKxeqkAMy_"
+MODEL_PATH = "data/rf_model.joblib"
+
+# Encoder file (replace FILE_ID with your actual encoder file id)
+ENCODER_URL = "https://drive.google.com/uc?export=download&id=1eWrsWE7rRbF34U5POvoREBLG7QDWWwZb"
+ENCODER_PATH = "data/encoders.joblib"
+
+
+if not os.path.exists(MODEL_PATH):
+    os.makedirs("data", exist_ok=True)
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+if not os.path.exists(ENCODER_PATH):
+    os.makedirs("data", exist_ok=True)
+    urllib.request.urlretrieve(ENCODER_URL, ENCODER_PATH)
+
+model = joblib.load(MODEL_PATH)
+encoders = joblib.load(ENCODER_PATH)
+
 
 st.title("Electricity Bill Predictor using Random Forest Regressor")
 
@@ -38,4 +56,4 @@ if st.button("Predict"):
     for col in ['City', 'Company']:
         user_data[col] = encoders[col].transform(user_data[col])
     pred = model.predict(user_data)
-    st.success(f"Predicted Electricity Bill: ₹{pred[0]:.2f}")
+    st.success(f"Predicted Electricity Bill: {pred[0]:.2f} INR")
